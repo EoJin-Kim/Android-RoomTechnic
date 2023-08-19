@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         insertBtn.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
-                db.textDao().insert(TextEntity(0,inputArea.text.toString()))
+                db.textDao().insert(TextEntity(0,inputArea.text.toString(), "text2"))
                 inputArea.setText("")
             }
         }

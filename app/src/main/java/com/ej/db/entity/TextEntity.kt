@@ -12,6 +12,9 @@ data class TextEntity(
     val id :Int,
 
     @ColumnInfo(name = "text")
-    var text : String
+    var text : String,
+
+    @ColumnInfo(name = "text2", defaultValue = "this is text2 default")
+    var text2 : String
 ) {
 }
