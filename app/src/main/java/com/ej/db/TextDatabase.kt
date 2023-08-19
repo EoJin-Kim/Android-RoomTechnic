@@ -5,11 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.ej.db.dao.TextDao
+import com.ej.db.dao.TextDao2
 import com.ej.db.entity.TextEntity
+import com.ej.db.entity.TextEntity2
 
-@Database(entities = [TextEntity::class], version = 1)
+@Database(
+    entities = [TextEntity::class, TextEntity2::class],
+    version = 2
+)
 abstract class TextDatabase  : RoomDatabase(){
     abstract fun textDao() :TextDao
+    abstract fun textDao2() : TextDao2
 
 
     companion object{
