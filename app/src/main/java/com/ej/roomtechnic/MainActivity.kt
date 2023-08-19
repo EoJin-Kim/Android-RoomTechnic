@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import com.ej.db.TextDatabase
 import com.ej.db.entity.TextEntity
+import com.ej.db.entity.TextEntity2
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         insertBtn.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 db.textDao().insert(TextEntity(0,inputArea.text.toString()))
+                db.textDao2().insert(TextEntity2(0,inputArea.text.toString(),"123"))
                 inputArea.setText("")
             }
         }
@@ -34,12 +36,14 @@ class MainActivity : AppCompatActivity() {
         getAllBtn.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 Log.d("MAIN", db.textDao().getAllData().toString())
+                Log.d("MAIN", db.textDao2().getAllData().toString())
             }
         }
 
         deleteBtn.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 db.textDao().deleteAllData()
+                db.textDao2().deleteAllData()
             }
         }
     }
