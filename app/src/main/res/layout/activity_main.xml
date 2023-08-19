@@ -32,4 +32,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="delete" />
+
+    <ImageView
+        android:id="@+id/bok"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/img_bok"
+        tools:srcCompat="@drawable/img_bok" />
+
+    <Button
+        android:id="@+id/setImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="setImage" />
+
+    <ImageView
+        android:id="@+id/bok2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/getImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="setImage" />
 </LinearLayout>

@@ -1,13 +1,13 @@
 package com.ej.db
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import com.ej.db.dao.TextDao
+import com.ej.db.entity.MyConverters
 import com.ej.db.entity.TextEntity
 
 @Database(entities = [TextEntity::class], version = 1)
+@TypeConverters(MyConverters::class)
 abstract class TextDatabase  : RoomDatabase(){
     abstract fun textDao() :TextDao
 

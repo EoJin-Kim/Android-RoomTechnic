@@ -1,8 +1,10 @@
 package com.ej.db.entity
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import androidx.room.*
+import java.io.ByteArrayOutputStream
+import java.util.Date
 
 @Entity(tableName = "text_table")
 data class TextEntity(
@@ -12,6 +14,36 @@ data class TextEntity(
     val id :Int,
 
     @ColumnInfo(name = "text")
-    var text : String
-) {
+    var text : String,
+
+    @ColumnInfo(name = "currentDate")
+    val currentDate : Date,
+
+    @ColumnInfo(name = "photo")
+    val myPhoto : Bitmap,
+)
+
+class MyConverters{
+    @TypeConverter
+    fun fromTimestampToDate(value : Long) : Date{
+        return Date(value)
+    }
+
+    @TypeConverter
+    fun fromDateToTimestamp(date: Date) : Long{
+        return date.time
+    }
+
+    @TypeConverter
+    fun fromBitmapToByteArray(bitmap: Bitmap) : ByteArray{
+        val outputStream = ByteArrayOutputStream()
+
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100 , outputStream)
+        return outputStream.toByteArray()
+    }
+
+    @TypeConverter
+    fun fromByteArrayToBitmap(byteArray: ByteArray) : Bitmap{
+        return BitmapFactory.decodeByteArray(byteArray,0,byteArray.size)
+    }
 }
